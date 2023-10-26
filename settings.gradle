@@ -1,0 +1,5 @@
+rootProject.name = 'micro-service-workspace'
+include 'gateway:core-gateway'
+include 'modules:core-module'
+include 'modules:user-module'
+include 'lib:common-library'
