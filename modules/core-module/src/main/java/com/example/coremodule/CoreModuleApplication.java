@@ -1,9 +1,11 @@
 package com.example.coremodule;
 
+import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
+@EnableDubbo
 public class CoreModuleApplication {
 
     public static void main(String[] args) {

@@ -9,3 +9,11 @@ spring:
       minimumIdle: 5
     tomcat:
       jmx-enabled: true
+dubbo:
+  application:
+    name: core-module
+  protocol:
+    name: dubbo
+    port: -1
+  registry:
+    address: zookeeper://${zookeeper.address:127.0.0.1}:2181
