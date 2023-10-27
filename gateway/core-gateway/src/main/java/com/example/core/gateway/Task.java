@@ -3,13 +3,14 @@ package com.example.core.gateway;
 import com.example.library.common.service.DemoService;
 import com.example.library.common.service.UserService;
 import org.apache.dubbo.config.annotation.DubboReference;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import java.util.Date;
-
 @Component
 public class Task implements CommandLineRunner {
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
     @DubboReference
     private DemoService demoService;
 
@@ -18,17 +19,17 @@ public class Task implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        String result = demoService.sayHello("world");
-        System.out.println("Receive result ======> " + result);
-
+        logger.info("Thread start");
         new Thread(() -> {
             while (true) {
                 try {
-                    Thread.sleep(1000);
-                    System.out.println(new Date() + " Receive result ======> " + demoService.sayHello("world"));
-                    System.out.println(new Date() + " Receive result ======> " + userService.getUserByName("world"));
+                    logger.info("DemoService.sayHello result ======> " + demoService.sayHello("world"));
+                    logger.info("UserService.getRecordUserByName result ======> " + userService.getRecordUserByName("world").toString());
+                    logger.info("UserService.getLombokUserByName result ======> " + userService.getLombokUserByName("world").toString());
+                    logger.info("UserService.getLombokBuilderUserByName result ======> " + userService.getLombokBuilderUserByName("world").toString());
+                    Thread.sleep(5000);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    logger.error("Get data error", e);
                     Thread.currentThread().interrupt();
                 }
             }
