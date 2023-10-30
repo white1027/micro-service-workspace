@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/micro_service
+    url: jdbc:postgresql://localhost:5432/core_module
     username: postgres_user_tw
     password: postgres
     driver-class-name: org.postgresql.Driver

@@ -8,6 +8,7 @@ import java.io.Serializable;
 @Builder
 @Data
 public class LombokBuilderUser implements Serializable {
+    Long id;
     String name;
     Integer age;
 }
