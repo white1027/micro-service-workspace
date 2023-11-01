@@ -5,7 +5,6 @@ import com.example.library.common.model.LombokUser;
 import com.example.library.common.model.RecordUser;
 import com.example.library.common.model.domain.User;
 import org.apache.ibatis.annotations.*;
-import org.eclipse.jetty.util.StringUtil;
 
 import java.util.List;
 

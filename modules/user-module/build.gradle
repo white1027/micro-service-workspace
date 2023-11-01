@@ -24,13 +24,18 @@ repositories {
 
 dependencies {
     implementation project(':lib:common-library')
-    // https://mvnrepository.com/artifact/org.apache.dubbo/dubbo-spring-boot-starter
+    // dubbo
     implementation 'org.apache.dubbo:dubbo-spring-boot-starter:3.2.7'
-    // https://mvnrepository.com/artifact/org.apache.dubbo/dubbo-dependencies-zookeeper-curator5
     implementation 'org.apache.dubbo:dubbo-dependencies-zookeeper-curator5:3.2.7'
+    // spring boot
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.2'
+    // flyway
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'org.flywaydb:flyway-core'
+    // lombok
     compileOnly 'org.projectlombok:lombok'
+    // dev
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
 //    developmentOnly 'org.springframework.boot:spring-boot-docker-compose'
     runtimeOnly 'org.postgresql:postgresql'
