@@ -44,6 +44,5 @@
 - [ ] dubbo service mesh
 - [ ] dubbo 序列化調整
 - [ ] dubbo admin
-- [ ] 加入設定檔
 - [ ] 加入 Controller 呼叫微服務
 - [ ] docker compose 整合

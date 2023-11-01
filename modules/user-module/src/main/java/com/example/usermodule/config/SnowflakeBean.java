@@ -5,12 +5,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class SnowflakeConfig {
+public class SnowflakeBean {
 
     @Bean
-    SnowflakeDistributeId snowflakeDistributeId() {
-        //TODO 加到設定檔
-        return new SnowflakeDistributeId(0, 0);
+    SnowflakeDistributeId snowflakeDistributeId(AppProperties appProperties) {
+        return new SnowflakeDistributeId(appProperties.getSnowflake().getWorkerId(), appProperties.getSnowflake().getDatacenterId());
     }
-
 }

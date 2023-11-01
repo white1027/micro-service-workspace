@@ -1,4 +1,7 @@
-
+app:
+  snowflake:
+    worker-id: 1
+    datacenter-id: 1
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/user_module
