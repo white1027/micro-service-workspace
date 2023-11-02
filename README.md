@@ -14,7 +14,8 @@
 
 ### Gateway
 - **Spring Actuator** 監控用
-- **Spring Web** Restful Api
+- **Spring Webflux** Reactive web (嘗試使用)
+- **Jetty** 搭配 Webflux
 - **Dubbo** 微服務通訊用   
 - **Zookeeper** 微服務註冊用   
    
@@ -44,5 +45,5 @@
 - [ ] dubbo service mesh
 - [ ] dubbo 序列化調整
 - [ ] dubbo admin
-- [ ] 加入 Controller 呼叫微服務
+- [ ] dubbo api docs
 - [ ] docker compose 整合

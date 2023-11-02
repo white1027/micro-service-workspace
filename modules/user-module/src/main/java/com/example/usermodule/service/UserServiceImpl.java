@@ -37,19 +37,28 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User createUser(User user) {
+    public int createUser(User user) {
         user.setId(snowflakeDistributeId.nextId());
-        userMapper.insert(user);
-        return user;
+        return userMapper.createUser(user);
     }
 
     @Override
-    public List<User> findAllUser() {
+    public int updateUser(User user) {
+        return userMapper.updateUser(user);
+    }
+
+    @Override
+    public int deleteUser(Long id) {
+        return userMapper.deleteUser(id);
+    }
+
+    @Override
+    public List<RecordUser> findAllUser() {
         return userMapper.findAllUser();
     }
 
     @Override
-    public List<User> findUserBySearchParam(User user) {
+    public List<RecordUser> findUserBySearchParam(User user) {
         return userMapper.findUserBySearchParam(user);
     }
 }

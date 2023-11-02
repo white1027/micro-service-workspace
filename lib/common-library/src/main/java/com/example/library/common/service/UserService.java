@@ -11,7 +11,9 @@ public interface UserService {
     RecordUser findRecordUserById(long id);
     LombokUser findLombokUserById(long id);
     LombokBuilderUser findLombokBuilderUserById(long id);
-    User createUser(User user);
-    List<User> findAllUser();
-    List<User> findUserBySearchParam(User user);
+    List<RecordUser> findAllUser();
+    List<RecordUser> findUserBySearchParam(User user);
+    int createUser(User user);
+    int updateUser(User user);
+    int deleteUser(Long id);
 }

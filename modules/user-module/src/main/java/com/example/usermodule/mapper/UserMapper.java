@@ -10,12 +10,6 @@ import java.util.List;
 
 @Mapper
 public interface UserMapper {
-    @Insert("INSERT INTO tbl_user (id, name, age ) VALUES(#{id}, #{name}, #{age})")
-    void insert(User user);
-
-    @Select("SELECT id, name, age FROM tbl_user WHERE id = #{id}")
-    User findById(long id);
-
     @Select("SELECT id, name, age FROM tbl_user WHERE id = #{id}")
     RecordUser findRecordUserById(long id);
 
@@ -26,10 +20,22 @@ public interface UserMapper {
     LombokBuilderUser findLombokBuilderUserById(long id);
 
     @Select("SELECT id, name, age FROM tbl_user")
-    List<User> findAllUser();
+    List<RecordUser> findAllUser();
 
     @SelectProvider(type = UserInfoSql.class, method = "findUserBySearchParam")
-    List<User> findUserBySearchParam(User user);
+    List<RecordUser> findUserBySearchParam(User user);
+
+    @Insert("INSERT INTO tbl_user (id, name, age ) VALUES(#{id}, #{name}, #{age})")
+    int createUser(User user);
+
+    @Select("SELECT id, name, age FROM tbl_user WHERE id = #{id}")
+    RecordUser findById(long id);
+
+    @Update("UPDATE tbl_user set name = #{name}, age = #{age} WHERE id = #{id}")
+    int updateUser(User user);
+
+    @Delete("DELETE FROM tbl_user WHERE id = #{id}")
+    int deleteUser(long id);
 
     class UserInfoSql {
         public String findUserBySearchParam(User user) {

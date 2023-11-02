@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 @Data
 public class LombokUser implements Serializable {
-    Long id;
+    String id;
     String name;
     Integer age;
 }
