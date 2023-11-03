@@ -1,0 +1,59 @@
+version: '3.8'
+services:
+  core-gateway:
+    container_name: core-gateway
+    image: docker.io/library/core-gateway:0.0.1-SNAPSHOT
+    ports:
+      - "8099:8099"
+      - "20882:20880"
+    environment:
+      - ZOOKEEPER_ADDRESS=zookeeper
+      - SERVER_PORT=8099
+    depends_on:
+      - core-module
+      - user-module
+  core-module:
+    container_name: core-module
+    image: docker.io/library/core-module:0.0.1-SNAPSHOT
+    ports:
+      - "20880:20880"
+    environment:
+      - ZOOKEEPER_ADDRESS=zookeeper
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/core_module
+      - SPRING_DATASOURCE_USERNAME=postgres_user_tw
+      - SPRING_DATASOURCE_PASSWORD=postgres
+    depends_on:
+      - zookeeper
+      - postgres
+  user-module:
+    container_name: user-module
+    image: docker.io/library/user-module:0.0.1-SNAPSHOT
+    ports:
+      - "20881:20880"
+    environment:
+      - ZOOKEEPER_ADDRESS=zookeeper
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/user_module
+      - SPRING_DATASOURCE_USERNAME=postgres_user_tw
+      - SPRING_DATASOURCE_PASSWORD=postgres
+    depends_on:
+      - zookeeper
+      - postgres
+  zookeeper:
+    image: zookeeper:3.9.1-jre-17
+    ports:
+      - "2181:2181"
+    environment:
+      ZOO_MY_ID: 1
+      ZOO_SERVERS: server.1=zookeeper:2888:3888;2181
+  postgres:
+    image: postgres:16
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres_user_tw
+    volumes:
+      - "postgres_data:/var/lib/postgresql"
+      - "./initdb:/docker-entrypoint-initdb.d"
+volumes:
+  postgres_data: 

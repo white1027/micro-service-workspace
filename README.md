@@ -30,11 +30,20 @@
 - **Postgres** 目前引用的JDBC
 - **Flyway** DB版控工具
 
+## 開發方法
+1. 啟動 Zookeeper
+2. 啟動 各微服務
+3. 啟動 Gateway Port 預設為 8099
+4. 至 localhost:8099/index.html 可以看到 Api 列表
+
 ## 可能的問題
 - 專案太多導致 gradle oom
 
 ## 官方文件
 - Mybatis [動態SQL](https://mybatis.org/mybatis-3/zh/dynamic-sql.html)
+- Dubbo [官網](https://cn.dubbo.apache.org/zh-cn/overview/home/)
+- Redoc [Github](https://github.com/Redocly/redoc)
+- Zookeeper [Docker](https://hub.docker.com/_/zookeeper)
 
 ### 套件使用注意事項
 - **Flyway** 目前設定為 專案啟動就會自動更新目標DB
@@ -43,7 +52,6 @@
 ## TODO
 - [ ] mybatis 切換 schema
 - [ ] dubbo service mesh
-- [ ] dubbo 序列化調整
 - [ ] dubbo admin
 - [ ] dubbo api docs
-- [ ] docker compose 整合
+- [ ] API 註解
