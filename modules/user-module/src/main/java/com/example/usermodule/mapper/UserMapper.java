@@ -1,35 +1,25 @@
 package com.example.usermodule.mapper;
 
-import com.example.library.common.model.LombokBuilderUser;
-import com.example.library.common.model.LombokUser;
-import com.example.library.common.model.RecordUser;
-import com.example.library.common.model.domain.User;
+import com.example.library.common.model.user.UserResponse;
+import com.example.library.common.model.user.UserSearchParam;
+import com.example.library.common.model.user.domain.User;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
 @Mapper
 public interface UserMapper {
-    @Select("SELECT id, name, age FROM tbl_user WHERE id = #{id}")
-    RecordUser findRecordUserById(long id);
-
-    @Select("SELECT id, name, age FROM tbl_user WHERE id = #{id}")
-    LombokUser findLombokUserById(long id);
-
-    @Select("SELECT id, name, age FROM tbl_user WHERE id = #{id}")
-    LombokBuilderUser findLombokBuilderUserById(long id);
-
     @Select("SELECT id, name, age FROM tbl_user")
-    List<RecordUser> findAllUser();
+    List<UserResponse> findAllUser();
 
     @SelectProvider(type = UserInfoSql.class, method = "findUserBySearchParam")
-    List<RecordUser> findUserBySearchParam(User user);
+    List<UserResponse> findUserBySearchParam(UserSearchParam user);
 
     @Insert("INSERT INTO tbl_user (id, name, age ) VALUES(#{id}, #{name}, #{age})")
     int createUser(User user);
 
     @Select("SELECT id, name, age FROM tbl_user WHERE id = #{id}")
-    RecordUser findById(long id);
+    UserResponse findById(long id);
 
     @Update("UPDATE tbl_user set name = #{name}, age = #{age} WHERE id = #{id}")
     int updateUser(User user);

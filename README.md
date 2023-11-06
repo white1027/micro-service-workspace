@@ -17,7 +17,8 @@
 - **Spring Webflux** Reactive web (嘗試使用)
 - **Jetty** 搭配 Webflux
 - **Dubbo** 微服務通訊用   
-- **Zookeeper** 微服務註冊用   
+- **Zookeeper** 微服務註冊用
+- **OpenApi + Redoc**
    
 ### CommonLibrary
 - **Lombok** 好用的 getter setter 工具
@@ -36,8 +37,9 @@
 3. 啟動 Gateway Port 預設為 8099
 4. 至 localhost:8099/index.html 可以看到 Api 列表
 
-## 可能的問題
+## 使用注意事項
 - 專案太多導致 gradle oom
+- Model 的類別可以使用 Record 或 @Data 或 @Builder, mybatis dubbo 都可以解析
 
 ## 官方文件
 - Mybatis [動態SQL](https://mybatis.org/mybatis-3/zh/dynamic-sql.html)
@@ -74,7 +76,6 @@
 - [ ] mybatis 切換 schema
 - [ ] dubbo service mesh
 - [ ] dubbo api docs
-- [ ] API 註解
 - [ ] 單元測試 (目前 dubbo 會失敗)
 - [ ] Gateway 驗證 (Session或JWT)
 - [ ] Gateway 登入

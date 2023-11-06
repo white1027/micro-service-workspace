@@ -1,9 +1,8 @@
 package com.example.usermodule.service;
 
-import com.example.library.common.model.LombokBuilderUser;
-import com.example.library.common.model.LombokUser;
-import com.example.library.common.model.RecordUser;
-import com.example.library.common.model.domain.User;
+import com.example.library.common.model.user.UserResponse;
+import com.example.library.common.model.user.UserSearchParam;
+import com.example.library.common.model.user.domain.User;
 import com.example.library.common.service.UserService;
 import com.example.library.common.utils.SnowflakeDistributeId;
 import com.example.usermodule.mapper.UserMapper;
@@ -22,18 +21,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public RecordUser findRecordUserById(long id) {
-        return userMapper.findRecordUserById(id);
-    }
-
-    @Override
-    public LombokUser findLombokUserById(long id) {
-        return userMapper.findLombokUserById(id);
-    }
-
-    @Override
-    public LombokBuilderUser findLombokBuilderUserById(long id) {
-        return userMapper.findLombokBuilderUserById(id);
+    public UserResponse findById(long id) {
+        return userMapper.findById(id);
     }
 
     @Override
@@ -53,12 +42,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<RecordUser> findAllUser() {
+    public List<UserResponse> findAllUser() {
         return userMapper.findAllUser();
     }
 
     @Override
-    public List<RecordUser> findUserBySearchParam(User user) {
+    public List<UserResponse> findUserBySearchParam(UserSearchParam user) {
         return userMapper.findUserBySearchParam(user);
     }
 }

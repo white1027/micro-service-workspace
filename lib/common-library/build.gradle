@@ -14,12 +14,10 @@ repositories {
 }
 
 dependencies {
+    implementation 'io.swagger.core.v3:swagger-annotations:2.2.18'
+
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
-}
-
-tasks.named('test') {
-    useJUnitPlatform()
 }
 
 bootJar {
