@@ -48,10 +48,33 @@
 ### 套件使用注意事項
 - **Flyway** 目前設定為 專案啟動就會自動更新目標DB
 
+## 編譯指令跟發行
+
+### 編譯成JAR
+- ` gradle build`
+
+#### Jar 位置
+- gateway/core-gateway/build/libs/core-gateway:0.0.1-SNAPSHOT
+- modules/core-module/build/libs/core-module:0.0.1-SNAPSHOT
+- modules/user-module/build/libs/user-module:0.0.1-SNAPSHOT
+
+
+### graalvm Native
+- ` gradle gateway:core-gateway:bootBuildImage `
+- ` gradle modules:core-module:bootBuildImage `
+- ` gradle modules:user-module:bootBuildImage`
+
+#### image 位置
+- docker.io/library/core-gateway:0.0.1-SNAPSHOT
+- docker.io/library/core-module:0.0.1-SNAPSHOT
+- docker.io/library/user-module:0.0.1-SNAPSHOT
+
 
 ## TODO
 - [ ] mybatis 切換 schema
 - [ ] dubbo service mesh
-- [ ] dubbo admin
 - [ ] dubbo api docs
 - [ ] API 註解
+- [ ] 單元測試 (目前 dubbo 會失敗)
+- [ ] Gateway 驗證 (Session或JWT)
+- [ ] Gateway 登入

@@ -55,5 +55,16 @@ services:
     volumes:
       - "postgres_data:/var/lib/postgresql"
       - "./initdb:/docker-entrypoint-initdb.d"
+  dubbo-admin:
+    image: apache/dubbo-admin:0.6.0
+    ports:
+      - "30880:30880"
+      - "38080:38080"
+    environment:
+      - ADMIN_CONFIG_CENTER=zookeeper://zookeeper:2181
+      - ADMIN_REGISTRY_ADDRESS=zookeeper://zookeeper:2181
+      - ADMIN_METADATA_REPORT_ADDRESS=zookeeper://zookeeper:2181
+    depends_on:
+      - zookeeper
 volumes:
   postgres_data: 
