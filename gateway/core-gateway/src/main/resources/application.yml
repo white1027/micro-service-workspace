@@ -9,3 +9,19 @@ dubbo:
     port: -1
   registry:
     address: zookeeper://${zookeeper.address:127.0.0.1}:2181
+############## Sa-Token 設定 (文件: https://sa-token.cc) ##############
+sa-token:
+  # token 名稱（同時也是 cookie 名稱）
+  token-name: satoken
+  # token 有效期（單位：秒）預設30天，-1 代表永久有效
+  timeout: 2592000
+  # token 最低活躍頻率（單位：秒），如果 token 超過此時間沒有訪問系統就會被凍結，預設-1 代表不限制，永不凍結
+  active-timeout: -1
+  # 是否允許同一賬號多地同時登錄（為 true 時允許一起登錄，為 false 時新登錄擠掉舊登錄）
+  is-concurrent: true
+  # 在多人登錄同一賬號時，是否共用一個 token（為 true 時所有登錄共用一個 token，為 false 時每次登錄新建一個 token）
+  is-share: true
+  # token 風格（預設可取值：uuid、simple-uuid、random-32、random-64、random-128、tik）
+  token-style: uuid
+  # 是否輸出操作日誌
+  is-log: true

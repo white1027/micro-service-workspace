@@ -7,11 +7,8 @@ import org.apache.dubbo.config.annotation.DubboService;
 
 @DubboService
 public class DemoServiceImpl implements DemoService {
-    @DubboReference
-    UserService userService;
-
     @Override
     public String sayHello(String name) {
-        return "Hello " + name + userService.findAllUser().size();
+        return "Hello " + name;
     }
 }

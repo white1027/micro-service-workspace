@@ -19,6 +19,7 @@
 - **Dubbo** 微服務通訊用   
 - **Zookeeper** 微服務註冊用
 - **OpenApi + Redoc**
+- **Sa-Token** 登入驗證用
    
 ### CommonLibrary
 - **Lombok** 好用的 getter setter 工具
@@ -40,12 +41,14 @@
 ## 使用注意事項
 - 專案太多導致 gradle oom
 - Model 的類別可以使用 Record 或 @Data 或 @Builder, mybatis dubbo 都可以解析
+- Sa-Token 可以搭配 dubbo 使用
 
 ## 官方文件
 - Mybatis [動態SQL](https://mybatis.org/mybatis-3/zh/dynamic-sql.html)
 - Dubbo [官網](https://cn.dubbo.apache.org/zh-cn/overview/home/)
 - Redoc [Github](https://github.com/Redocly/redoc)
 - Zookeeper [Docker](https://hub.docker.com/_/zookeeper)
+- Sa-Token [官網](https://sa-token.cc/)
 
 ### 套件使用注意事項
 - **Flyway** 目前設定為 專案啟動就會自動更新目標DB
@@ -62,11 +65,12 @@
 
 
 ### graalvm Native
-- ` gradle gateway:core-gateway:bootBuildImage `
-- ` gradle modules:core-module:bootBuildImage `
-- ` gradle modules:user-module:bootBuildImage`
-
-#### image 位置
+- `gradle :gateway:core-gateway:bootBuildImage :modules:core-module:bootBuildImage :modules:user-module:bootBuildImage`
+or
+- `gradle :gateway:core-gateway:bootBuildImage`
+- `gradle :modules:core-module:bootBuildImage`
+- `gradle :modules:user-module:bootBuildImage`
+#### image 預設位置
 - docker.io/library/core-gateway:0.0.1-SNAPSHOT
 - docker.io/library/core-module:0.0.1-SNAPSHOT
 - docker.io/library/user-module:0.0.1-SNAPSHOT
@@ -77,5 +81,4 @@
 - [ ] dubbo service mesh
 - [ ] dubbo api docs
 - [ ] 單元測試 (目前 dubbo 會失敗)
-- [ ] Gateway 驗證 (Session或JWT)
-- [ ] Gateway 登入
+- [ ] Docker Compose 接開發

@@ -28,7 +28,7 @@ public interface UserMapper {
     int deleteUser(long id);
 
     class UserInfoSql {
-        public String findUserBySearchParam(User user) {
+        public String findUserBySearchParam(UserSearchParam user) {
             // 這段也可以用在 @Select()
             return """
                     <script>
